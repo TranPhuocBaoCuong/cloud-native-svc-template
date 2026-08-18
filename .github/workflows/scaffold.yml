@@ -59,7 +59,7 @@ jobs:
       # so it cannot create repos in the destination org.
       - name: Create destination GitHub repository
         env:
-          GH_TOKEN: ${{ secrets.SCAFFOLD_PAT }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           gh repo create \
             "${{ steps.params.outputs.destination_org }}/${{ steps.params.outputs.destination_repo }}" \
@@ -68,7 +68,7 @@ jobs:
 
       - name: Push scaffolded code to new repo
         env:
-          GH_TOKEN: ${{ secrets.SCAFFOLD_PAT }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           cd /tmp/scaffolded
           git init
